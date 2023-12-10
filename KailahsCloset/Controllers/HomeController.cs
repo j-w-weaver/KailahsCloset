@@ -1,4 +1,4 @@
-using KailahsCloset.Models;
+using KailahsCloset.Models.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

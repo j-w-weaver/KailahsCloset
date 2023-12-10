@@ -1,7 +1,8 @@
-﻿using KailahsCloset.Data;
-using KailahsCloset.Models;
+﻿using KailahsCloset.DataAccess.Data;
+using KailahsCloset.Models.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using System;
 
 namespace KailahsCloset.Controllers
 {
