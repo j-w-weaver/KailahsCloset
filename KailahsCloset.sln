@@ -5,11 +5,11 @@ VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KailahsCloset", "KailahsCloset\KailahsCloset.csproj", "{99FD1290-D65F-4C59-B699-AD19F7EAC438}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KailahsCloset.DataAccess", "KailahsCloset.DataAccess\KailahsCloset.DataAccess.csproj", "{5B501227-E2F6-49AC-9600-78D98F67F097}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KailahsCloset.DataAccess", "KailahsCloset.DataAccess\KailahsCloset.DataAccess.csproj", "{5B501227-E2F6-49AC-9600-78D98F67F097}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KailahsCloset.Models", "KailahsCloset.Models\KailahsCloset.Models.csproj", "{A59DA63E-4603-4D63-81C9-4F63E0AC4BD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KailahsCloset.Models", "KailahsCloset.Models\KailahsCloset.Models.csproj", "{A59DA63E-4603-4D63-81C9-4F63E0AC4BD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KailahsCloset.Utilites", "KailahsCloset.Utilites\KailahsCloset.Utilites.csproj", "{C17158D7-B4CD-4491-A461-CB6252A4C543}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KailahsCloset.Utilites", "KailahsCloset.Utilites\KailahsCloset.Utilites.csproj", "{C17158D7-B4CD-4491-A461-CB6252A4C543}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
