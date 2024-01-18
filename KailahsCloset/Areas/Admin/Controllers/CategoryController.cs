@@ -1,23 +1,26 @@
 ﻿using KailahsCloset.DataAccess.Data;
+using KailahsCloset.DataAccess.Services.Contracts;
 using KailahsCloset.Models.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using System;
 
-namespace KailahsCloset.Controllers
+namespace KailahsCloset.Web.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
-        private readonly AppDbContext _db;
-        public CategoryController(AppDbContext db)
+        private readonly ICategoryRepository _categoryRepo;
+
+        public CategoryController(ICategoryRepository categoryRepo)
         {
-            _db = db;
+            _categoryRepo = categoryRepo;
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            var categoryList = _db.Categories.ToList();
+            List<Category> categoryList = _categoryRepo.GetAll().ToList();
             return View(categoryList);
         }
 
@@ -31,8 +34,8 @@ namespace KailahsCloset.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Categories.Add(categoryObject);
-                _db.SaveChanges();
+                _categoryRepo.Add(categoryObject);
+                _categoryRepo.Save();
                 TempData["success"] = "Category Created Successfully";
                 // If you want to redirect to an action method in another controller
                 // add another parameter with the controller like below
@@ -49,7 +52,7 @@ namespace KailahsCloset.Controllers
             {
                 return NotFound();
             }
-            var categoryObject = _db.Categories.Find(id);
+            var categoryObject = _categoryRepo.Get(c => c.CategoryId == id);
 
             if (categoryObject == null)
             {
@@ -63,8 +66,8 @@ namespace KailahsCloset.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Categories.Update(categoryObject);
-                _db.SaveChanges();
+                _categoryRepo.Update(categoryObject);
+                _categoryRepo.Save();
                 TempData["success"] = "Category Updated Successfully";
                 // If you want to redirect to an action method in another controller
                 // add another parameter with the controller like below
@@ -82,7 +85,7 @@ namespace KailahsCloset.Controllers
             {
                 return NotFound();
             }
-            var categoryObject = _db.Categories.Find(id);
+            var categoryObject = _categoryRepo.Get(c => c.CategoryId == id);
 
             if (categoryObject == null)
             {
@@ -94,13 +97,13 @@ namespace KailahsCloset.Controllers
         [HttpPost, ActionName("Delete")]
         public IActionResult DeletePOST(int? id)
         {
-            var categoryObject = _db.Categories.Find(id);
+            var categoryObject = _categoryRepo.Get(c => c.CategoryId == id);
             if (categoryObject == null)
             {
                 return NotFound();
             }
-            _db.Categories.Remove(categoryObject);
-            _db.SaveChanges();
+            _categoryRepo.Delete(categoryObject);
+            _categoryRepo.Save();
             TempData["success"] = "Category Deleted Successfully";
             return RedirectToAction("Index");
 

@@ -3,6 +3,7 @@ using KailahsCloset.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KailahsCloset.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240103141217_addingProductTable")]
+    partial class addingProductTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -58,13 +61,7 @@ namespace KailahsCloset.DataAccess.Migrations
                         {
                             CategoryId = 3,
                             DisplayOrder = 3,
-                            Name = "T-Shirt"
-                        },
-                        new
-                        {
-                            CategoryId = 4,
-                            DisplayOrder = 4,
-                            Name = "Pants"
+                            Name = "Blouse"
                         });
                 });
 
@@ -80,14 +77,7 @@ namespace KailahsCloset.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageURL")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -104,8 +94,6 @@ namespace KailahsCloset.DataAccess.Migrations
 
                     b.HasKey("ProductId");
 
-                    b.HasIndex("CategoryId");
-
                     b.ToTable("Products");
 
                     b.HasData(
@@ -113,9 +101,7 @@ namespace KailahsCloset.DataAccess.Migrations
                         {
                             ProductId = 1,
                             Brand = "Nike",
-                            CategoryId = 1,
                             Description = "Black Nike zip-Up hoodie",
-                            ImageURL = "",
                             Name = "Nike Zip-Up Hoodie",
                             Price = 30.0,
                             Size = "Large"
@@ -124,9 +110,7 @@ namespace KailahsCloset.DataAccess.Migrations
                         {
                             ProductId = 2,
                             Brand = "Levi's",
-                            CategoryId = 2,
                             Description = "Dark wash slim-fit jeans for all occasions",
-                            ImageURL = "",
                             Name = "Levi's Slim-Fit Jeans",
                             Price = 35.0,
                             Size = "32x32"
@@ -135,9 +119,7 @@ namespace KailahsCloset.DataAccess.Migrations
                         {
                             ProductId = 3,
                             Brand = "Uniqulo",
-                            CategoryId = 3,
                             Description = "60% cotton / 40% polyester slim-fit grey tee.",
-                            ImageURL = "",
                             Name = "Uniqulo Grey Tee",
                             Price = 12.0,
                             Size = "Large"
@@ -146,9 +128,7 @@ namespace KailahsCloset.DataAccess.Migrations
                         {
                             ProductId = 4,
                             Brand = "ASColour",
-                            CategoryId = 3,
                             Description = "65% cotton / 35% polyester slim-fit navy blue tee.",
-                            ImageURL = "",
                             Name = "ASColour Navy Blue Tee",
                             Price = 12.0,
                             Size = "Large"
@@ -157,24 +137,11 @@ namespace KailahsCloset.DataAccess.Migrations
                         {
                             ProductId = 5,
                             Brand = "Flag & Anthem",
-                            CategoryId = 4,
                             Description = "60% cotton / 40% polyester dark grey chino pants.",
-                            ImageURL = "",
                             Name = "Flag & Anthem Oakland Slim Chinos",
                             Price = 38.0,
                             Size = "33x32"
                         });
-                });
-
-            modelBuilder.Entity("KailahsCloset.Models.Models.Product", b =>
-                {
-                    b.HasOne("KailahsCloset.Models.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Category");
                 });
 #pragma warning restore 612, 618
         }

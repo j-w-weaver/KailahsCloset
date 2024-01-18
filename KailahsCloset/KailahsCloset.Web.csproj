@@ -23,4 +23,8 @@
     <ProjectReference Include="..\KailahsCloset.Models\KailahsCloset.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\product\" />
+  </ItemGroup>
+
 </Project>
